@@ -24,23 +24,23 @@ public class KeyboardInputs implements KeyListener{
         // TODO Auto-generated method stub
         switch (e.getKeyCode()) {
             case KeyEvent.VK_W:
-                System.out.println("Key input is W");
+                //System.out.println("Key input is W");
                 panel.changeYDelta(-5);
                 break;
             case KeyEvent.VK_A:
-                System.out.println("Key input is A");
+                //System.out.println("Key input is A");
                 panel.changeXDelta(-5);
                 break;
             case KeyEvent.VK_S:
-                System.out.println("Key input is S" );
+                //System.out.println("Key input is S" );
                 panel.changeYDelta(+5);
                 break;
             case KeyEvent.VK_D:
-                System.out.println("Key input is D" );
+                //System.out.println("Key input is D" );
                 panel.changeXDelta(+5);
                 break;
             default:
-                System.out.println("A Key is pressed " + e.getKeyChar());
+                //System.out.println("A Key is pressed " + e.getKeyChar());
                 break;
         }
     }

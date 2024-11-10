@@ -17,20 +17,21 @@ public class MouseInputs implements MouseListener, MouseMotionListener{
     @Override
     public void mouseDragged(MouseEvent e) {
         // TODO Auto-generated method stub
-        System.out.println("Mouse input: Mouse Dragged");
+        //System.out.println("Mouse input: Mouse Dragged");
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
         // TODO Auto-generated method stub
-        System.out.println("Mouse input: Mouse Moved");
-        panel.setRectPosition(e.getX(), e.getY());
+        //System.out.println("Mouse input: Mouse Moved");
+        //panel.setRectPosition(e.getX(), e.getY());
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         // TODO Auto-generated method stub
-        System.out.println("Mouse input: Mouse Clicked");
+        //System.out.println("Mouse input: Mouse Clicked");
+        
     }
 
     @Override
