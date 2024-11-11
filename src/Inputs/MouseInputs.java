@@ -25,12 +25,17 @@ public class MouseInputs implements MouseListener, MouseMotionListener{
         // TODO Auto-generated method stub
         //System.out.println("Mouse input: Mouse Moved");
         //panel.setRectPosition(e.getX(), e.getY());
+        // panel.changeXDelta((int)(e.getX()*0.03));
+        // panel.changeYDelta((int)(e.getY()*0.03));
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         // TODO Auto-generated method stub
         //System.out.println("Mouse input: Mouse Clicked");
+        if(e.getButton() == MouseEvent.BUTTON1){
+            panel.getGame().getPlayer().setAttack(true);
+        }
         
     }
 
