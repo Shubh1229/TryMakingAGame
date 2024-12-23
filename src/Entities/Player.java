@@ -9,6 +9,8 @@ import static Util.Constant.PlayerConstants.*;
 
 import javax.imageio.ImageIO;
 
+import Util.LoadSave;
+
 public class Player extends Entity{
 
     private BufferedImage[][] animation;
@@ -17,8 +19,8 @@ public class Player extends Entity{
     private boolean moving = false, left, up, right, down, attacking = false;
     private float playerSpeed = 2.0f;
 
-    public Player(float x, float y){
-        super(x, y);
+    public Player(float x, float y, int width, int height){
+        super(x, y, width, height);
         loadAnimations();
     }
 
@@ -28,7 +30,7 @@ public class Player extends Entity{
         setAnimation();
     }
     public void render(Graphics g){
-        g.drawImage(animation[player_Action][animationindex], (int)x, (int)y, 256, 160, null);
+        g.drawImage(animation[player_Action][animationindex], (int)x, (int)y, width, height, null);
     }
 
 
@@ -121,29 +123,13 @@ public class Player extends Entity{
 
 
     private void loadAnimations(){
-        InputStream is = getClass().getResourceAsStream("/player_sprites.png");
-        if (is == null) {
-            throw new IllegalArgumentException("Image file not found!");
-        }
-        try {
-            BufferedImage img = ImageIO.read(is);
-            animation = new BufferedImage[9][6];
+        BufferedImage img = LoadSave.GetSpriteAtlas(LoadSave.PLAYER_ATLAS);
+        animation = new BufferedImage[9][6];
         for(int j = 0; j < animation.length; j++){
             for(int i = 0; i < animation[j].length; i++){
                 animation[j][i] = img.getSubimage(i*64, j*40, 64, 40);
             }
-        }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                is.close();
-            } catch (Exception e) {
-                // TODO: handle exception
-                e.printStackTrace();
-            }
-        }
-        
+        } 
     }
 
     public void setDirbooleans(boolean b) {
