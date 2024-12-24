@@ -2,16 +2,20 @@ package main;
 
 import java.awt.Graphics;
 
-import Entities.Player;
-import levels.LevelManager;
+import GameStates.GameState;
+import GameStates.Menu;
+import GameStates.Playing;
+
 
 public class Game implements Runnable{
     private GameWindow window;
     private GamePanel panel;
     private Thread gameThread;
     private final int FPS_SET = 120, UPS_SET = 200;
-    private Player player;
-    private LevelManager levelManager;
+
+    private Playing playing;
+    private Menu menu;
+
 
     public final static int TILES_DEFAULT_SIZE = 32;
     public final static float SCALE = 2f;
@@ -32,19 +36,37 @@ public class Game implements Runnable{
         
     }
     private void initClasses(){
-        levelManager = new LevelManager(this);
-        player = new Player(200, 200, (int)(64*SCALE), (int)(40*SCALE));
-        player.loadLEVELDATA(levelManager.getCurrentLevel().getLevelData());
+        menu = new Menu(this);
+        playing = new Playing(this);
     }
 
     public void update(){
-        player.update();
-        levelManager.update();
+
+        switch (GameState.state) {
+            case MENU:
+                menu.update();
+                break;
+            case PLAYING:
+                playing.update();
+                break;
+            default:
+                break;
+        }
     }
 
     public void render(Graphics g){
-        levelManager.draw(g);
-        player.render(g);
+        switch (GameState.state) {
+            case MENU:
+                menu.draw(g);
+                break;
+            case PLAYING:
+                playing.draw(g);
+                break;
+            default:
+                break;
+        }
+    
+
         
     }
 
@@ -103,13 +125,21 @@ public class Game implements Runnable{
         gameThread.start();
     }
 
-    public Player getPlayer(){
-        return player;
-    }
+    // public Player getPlayer(){
+    //     return player;
+    // }
 
     public void windowFocusLost(){
-        player.setDirbooleans(false);
+        if(GameState.state == GameState.PLAYING){
+            playing.getPlayer().setDirbooleans(false);
+        }
 
+    }
+    public Menu getMenu(){
+        return menu;
+    }
+    public Playing getPlaying(){
+        return playing;
     }
 
 
