@@ -6,7 +6,6 @@ import static Util.Constant.PlayerConstants.*;
 import static Util.HelpMethods.*;
 
 
-import javax.imageio.ImageIO;
 
 import Util.LoadSave;
 import main.Game;

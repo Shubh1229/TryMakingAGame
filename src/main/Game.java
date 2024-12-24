@@ -28,10 +28,6 @@ public class Game implements Runnable{
         window = new GameWindow(panel);
         panel.requestFocus();
 
-        
-
-
-
         startGameLoop();
         
     }
