@@ -1,16 +1,16 @@
-package GameStates;
+package gameStates;
 
+import Entities.Player;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-
-import Entities.Player;
 import levels.LevelManager;
 import main.Game;
 
 public class Playing extends State implements StateMethods {
     private Player player;
     private LevelManager levelManager;
+    private boolean paused;
 
     public Playing(Game game) {
         super(game);

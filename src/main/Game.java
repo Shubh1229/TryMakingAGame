@@ -1,10 +1,9 @@
 package main;
 
+import gameStates.GameState;
+import gameStates.Menu;
+import gameStates.Playing;
 import java.awt.Graphics;
-
-import GameStates.GameState;
-import GameStates.Menu;
-import GameStates.Playing;
 
 
 public class Game implements Runnable{
@@ -49,6 +48,9 @@ public class Game implements Runnable{
             case PLAYING:
                 playing.update();
                 break;
+            case OPTIONS:
+            case QUIT:
+                System.exit(0);
             default:
                 break;
         }

@@ -1,13 +1,10 @@
 package Entities;
 
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 import static Util.Constant.PlayerConstants.*;
 import static Util.HelpMethods.*;
-
-
-
 import Util.LoadSave;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import main.Game;
 
 public class Player extends Entity{
@@ -16,7 +13,7 @@ public class Player extends Entity{
     private int animationtick, animationindex, animationspeed = 20;
     private int player_Action = IDLE;
     private boolean moving = false, left, up, right, down, attacking = false;
-    private float playerSpeed = 2.0f;
+    private float playerSpeed = 1.0f * Game.SCALE;
     private int[][] lvlData;
     private float xDrawOffSet = 21 * Game.SCALE, yDrawOffSet = 4*Game.SCALE;
     //jumping and gravity
@@ -27,7 +24,7 @@ public class Player extends Entity{
     public Player(float x, float y, int width, int height){
         super(x, y, width, height);
         loadAnimations();
-        initHitBox(x, y, 20*Game.SCALE, 27*Game.SCALE);
+        initHitBox(x, y, (int)(20*Game.SCALE), (int)(27*Game.SCALE));
     }
 
     public void update(){

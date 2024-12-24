@@ -1,9 +1,8 @@
 package Inputs;
 
+import gameStates.GameState;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
-import GameStates.GameState;
 import main.GamePanel;
 
 public class KeyboardInputs implements KeyListener{

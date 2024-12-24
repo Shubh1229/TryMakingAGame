@@ -1,10 +1,9 @@
 package Inputs;
 
+import gameStates.GameState;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-
-import GameStates.GameState;
 import main.GamePanel;
 
 public class MouseInputs implements MouseListener, MouseMotionListener{
@@ -22,36 +21,45 @@ public class MouseInputs implements MouseListener, MouseMotionListener{
 
     @Override
     public void mouseMoved(MouseEvent e) {
-
-        //System.out.println("Mouse input: Mouse Moved");
-        //panel.setRectPosition(e.getX(), e.getY());
-        // panel.changeXDelta((int)(e.getX()*0.03));
-        // panel.changeYDelta((int)(e.getY()*0.03));
+        switch (GameState.state) {
+            case MENU -> panel.getGame().getMenu().mouseMoved(e);
+            default -> {
+                break;
+            }
+        }
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         switch (GameState.state) {
-            case PLAYING:
-                panel.getGame().getPlaying().mouseClicked(e);
+            case PLAYING -> panel.getGame().getPlaying().mouseClicked(e);
+            case MENU -> panel.getGame().getMenu().mouseClicked(e);
+            default -> {
                 break;
-            case MENU:
-                panel.getGame().getMenu().mouseClicked(e);
-                break;
-            default:
-                break;
+            }
         }
 
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-
+        switch (GameState.state) {
+            case PLAYING -> panel.getGame().getPlaying().mouseClicked(e);
+            case MENU -> panel.getGame().getMenu().mousePressed(e);
+            default -> {
+                break;
+            }
+        }
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
- 
+        switch (GameState.state) {
+            case MENU -> panel.getGame().getMenu().mouseReleased(e);
+            default -> {
+                break;
+            }
+        }
         
     }
 
